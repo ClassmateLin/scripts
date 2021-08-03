@@ -42,7 +42,7 @@ fi
 
 
 echo "git pull拉取最新代码..."
-cd $CODE_DIR && git reset --hard && git pull;
+cd $CODE_DIR && git fetch --all && git reset --hard origin/master && git pull;
 echo "pip install 安装最新依赖..."
 pip install -r $CODE_DIR/requirements.txt
 echo "更新docker-entrypoint..."
