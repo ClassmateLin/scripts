@@ -184,7 +184,10 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
 
     for i in range(len(JD_COOKIES)):
         jd_cookie = JD_COOKIES[i]
-        account = unquote(jd_cookie['pt_pin'])
+        if jd_cookie['remark']:
+            account = unquote(jd_cookie['remark'])
+        else:
+            account = unquote(jd_cookie['pt_pin'])
         ok = sync_check_cookie(jd_cookie)
         if not ok:  # 检查cookies状态, 这里不通知, 有定时任务会通知cookies过期!
             println('{}.账号:{}, cookie已过期, 无法执行:{}!'.format(i+1, account, name))
