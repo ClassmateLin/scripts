@@ -17,7 +17,7 @@ joy_feed_count: 20
 # 拼图签到进程数
 jd_puzzle_process_num: 1
 
-# 京东COOKIES
+# 京东COOKIES pt_pin=;pt_key=;remark=[备注，发送通知使用];
 jd_cookies:
   - pt_pin=;pt_key=;
 
