@@ -69,9 +69,10 @@ JOY_FEED_COUNT = cfg.get('joy_feed_count', 20)
 
 # JD COOKIES
 JD_COOKIES = [j for j in [{'pt_pin': re.search('pt_pin=(.*?);', i).group(1),
-                           'pt_key': re.search('pt_key=(.*?);', i).group(1)}
-                          for i in cfg.get('jd_cookies', []) if re.search('pt_pin=(.*?);pt_key=(.*?);', i)
-                          or re.search('pt_key=(.*?);pt_pin=(.*?);', i)] if j['pt_pin'] != '']
+                           'pt_key': re.search('pt_key=(.*?);', i).group(1),
+                           'remark': re.search('remark=(.*?);', i).group(1)}
+                          for i in cfg.get('jd_cookies', []) if re.search('pt_pin=(.*?);pt_key=(.*?);remark=(.*?);', i)
+                          or re.search('pt_key=(.*?);pt_pin=(.*?);remark=(.*?);', i)] if j['pt_pin'] != '']
 
 # 请求头列表
 USER_AGENT_LIST = [
