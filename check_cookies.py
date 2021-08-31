@@ -23,10 +23,10 @@ async def check_cookies():
     message = ''
     need_notify = False
     for cookies in JD_COOKIES:
-        if jd_cookie['remark']:
-            account = unquote(jd_cookie['remark'])
+        if cookies['remark']:
+            account = unquote(cookies['remark'])
         else:
-            account = unquote(jd_cookie['pt_pin'])
+            account = unquote(cookies['pt_pin'])
         ok = await async_check_cookie(cookies)
         if not ok:
             message += ' ' * 6 + account + '\n'
