@@ -19,7 +19,7 @@ jd_puzzle_process_num: 1
 
 # 京东COOKIES pt_pin=;pt_key=;remark=[备注，发送通知使用];
 jd_cookies:
-  - pt_pin=;pt_key=;
+  - pt_pin=;pt_key=;remark=;
 
 # 东东农场是否使用水滴换豆卡, 100水滴换20京豆
 jd_farm_bean_card: false
