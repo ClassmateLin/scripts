@@ -35,7 +35,7 @@ notify:
   tg_user_id: null
   # TG代理
   tg_bot_api: null
-  # pushplus token: http://www.pushplus.plus/
+  # pushplus token: https://www.pushplus.plus/
   push_plus_token: null
 
   # pushplus group 一对多推送才需要次配置

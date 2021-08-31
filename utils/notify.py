@@ -109,7 +109,7 @@ def push_plus_notify(title, content):
         if not PUSH_PLUS_TOKEN:
             println('未配置pushplus token, 不推送pushplus信息!')
             return
-        url = 'http://www.pushplus.plus/send'
+        url = 'https://www.pushplus.plus/send'
 
         headers = {
             'Content-Type': 'application/json',

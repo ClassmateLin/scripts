@@ -41,7 +41,7 @@ class Config:
         'notify': '消息通知配置项, TG机器人通知需要宿主机有qiang。',
         'tg_bot_token': 'TG机器人TOKEN',
         'tg_user_id': 'TG机器人用户ID',
-        'push_plus_token': 'pushplus消息通知Token, http://www.pushplus.plus/',
+        'push_plus_token': 'pushplus消息通知Token, https://www.pushplus.plus/',
         'push_plus_group': 'pushplus一对多通知组编号, 一对一不需要填',
         'qywx_am': '企业微信通知, 依次填上corpid的值,corpsecret的值,touser的值,agentid,media_id的值，注意用英文,号隔开。',
         'crontab_exclude_scripts': '在此列表中的脚本, 将不会加入到定时任务中, 如需立即生效, 请手动执行命令: docker-entrypoint',
