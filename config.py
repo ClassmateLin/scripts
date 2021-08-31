@@ -131,10 +131,10 @@ TG_BOT_TOKEN = cfg.get('notify', dict()).get('tg_bot_token', None)
 TG_BOT_API = cfg.get('notify', dict()).get('tg_bot_api', None)
 # server酱sendkey
 SERVER_SEND_KEY = cfg.get('notify', dict()).get('server_send_key', None)
-# push+ token配置
+# pushplus token配置
 PUSH_PLUS_TOKEN = cfg.get('notify', dict()).get('push_plus_token', None)
 
-# push+ group配置
+# pushplus group配置
 PUSH_PLUS_GROUP = cfg.get('notify', dict()).get('push_plus_group', None)
 
 #  企业微信配置

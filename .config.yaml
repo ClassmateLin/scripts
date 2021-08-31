@@ -35,10 +35,10 @@ notify:
   tg_user_id: null
   # TG代理
   tg_bot_api: null
-  # push+ token: https://pushplus.hxtrip.com/
+  # pushplus token: http://www.pushplus.plus/
   push_plus_token: null
 
-  # push+ group 一对多推送才需要次配置
+  # pushplus group 一对多推送才需要次配置
   push_plus_group: null
 
   # 依次填上corpid的值,corpsecret的值,touser的值,agentid,media_id的值，注意用,号隔开。

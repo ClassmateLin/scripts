@@ -102,18 +102,19 @@ class WeCom:
 
 def push_plus_notify(title, content):
     """
-    push+消息通知
+    pushplus消息通知
     :return:
     """
     try:
         if not PUSH_PLUS_TOKEN:
-            println('未配置PUSH+ token, 不推送PUSH+信息!')
+            println('未配置pushplus token, 不推送pushplus信息!')
             return
-        url = 'https://pushplus.hxtrip.com/send'
+        url = 'http://www.pushplus.plus/send'
 
         headers = {
             'Content-Type': 'application/json',
         }
+        title = title.replace('\n', '') # 标题不能换行
         content = content.replace('\n', '<br>')
         data = {
             'token': PUSH_PLUS_TOKEN,
@@ -127,11 +128,11 @@ def push_plus_notify(title, content):
         response = requests.post(url=url, json=data, headers=headers)
         response_data = response.json()
         if response_data['code'] == 200:
-            println('成功推送消息至PUSH+')
+            println('成功推送消息至pushplus')
         else:
-            println('推送PUSH+消息失败, {}'.format(response_data))
+            println('推送pushplus消息失败, {}'.format(response_data))
     except Exception as e:
-        println('推送PUSH+数据失败, {}!'.format(e.args))
+        println('推送pushplus数据失败, {}!'.format(e.args))
 
 
 def tg_bot_notify(title, message):
