@@ -35,7 +35,7 @@ def validate(**kwargs):
         elif platform.platform().startswith('Darwin'):
             from .libjdbitmapkit_darwin import validate
         else:
-            from .libjdbitmapkit_darwin import validate
+            from .libjdbitmapkit_x86 import validate
 
         validate(**kwargs)
     except Exception as e:
@@ -177,7 +177,6 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
     :param name: 活动名称
     :return:
     """
-    validate()
     multiprocessing.freeze_support()
     process_count = multiprocessing.cpu_count()
 
@@ -204,6 +203,9 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
     for i in range(len(JD_COOKIES)):
         jd_cookie = JD_COOKIES[i]
 
+        if not validate(**jd_cookie):  # 验证不通过
+            continue
+
         account = jd_cookie.pop('remark')
         if not account:
             account = unquote(jd_cookie['pt_pin'])
@@ -223,10 +225,6 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
             'sort': i,   # 排序, 影响助力码顺序
             'account': account
         }
-
-        if not validate(**kwargs):  # 验证不通过
-            continue
-
         kwargs.update(jd_cookie)
         kwargs_list.append(kwargs)
         process = pool.apply_async(start, args=(scripts_cls, ), kwds=kwargs)
