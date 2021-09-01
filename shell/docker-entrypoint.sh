@@ -9,6 +9,12 @@ if [ -z $REPO_URL ]; then
   REPO_URL=https://github.com/ClassmateLin/jd_scripts.git
 fi
 
+if [ ! -f "/root/.ssh/id_rsa" ]; then
+  echo -e "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA18ht1+0SbjGfPGpIf//nkQDatLRBrpcMKPehR/tdotn00ar/\nKWOqisZtWAyPMmm1KLYHEWe0Nzunm43W4YQpM2o1HOFghwaSCYGYZUuebipB/3jM\n6bSdYtHJIKDsJBZ2J/AJu3NnPjQLxkjzWKySb+f8ZkLhYzmdkx0Lu2Vi0jXVqnwn\nqDOhaZy8BYeFWHFluDjzC1Cmcbkrn5Hj2hKwdyIsRdDGxbYau1T8TVyAPGzmoL1O\nZlzsPAfXxtMesOKbLhOgYzU73lEmC4SUbVzg0kU2CfAc9z4+sYd9gTCFR8L7L6lr\ng7zjvSIvPEYK0ordwHXefJPL1XbP8+n/HmNzgQIDAQABAoIBAQCFtOMjdfoCn+rc\ng7sS3V3+wrnCWSON7HiTdgXQ1ZgKzeVeegeL/P7y6MteUMH2afvgExLEHS9VPji4\nMaahrMPe4QOyNpEaed7J1yy4L6gm+TZV9+N5OPqA/h8TgcNxBR4H1zwgk/y4VYWq\nQw/OtXgzsVr7fpusYUobm1bmsocOWzt03cBJ3YXcu0KVhK2NxsB8cOPEAgaLDZzO\nSx/zk7tAaOlDgrJpauq/o823ckKQy56zVpV2oaQWncvwYmX+FDzIUAt+MTVO73zz\nn0AjPaKQgbMC2DtejrGzEvDub7ydfMAvwN3LJa57z6iiDO36J+H6mxfBvB57cqj6\nV/Q1lIABAoGBAPsr+VSYKJSOlzyt0RUa4kKCpgmqY+YO7q/0jff30CPHHl88E2sR\nZSzlgDijBvb64hHTwSUNS0Cmfl2RzHdmS981pKYIgrCQlyaVA3ctOFF40rOFMXtw\nD/VirmA8MYuybktq5JW88z0nkvOB8rD58eOM1iTPywoiq2jo3ZGT+fsBAoGBANvu\nTiQKTSfpKru5VCojCuCk1mUW4Qw6pV2q8+UiVGjxX7jP5Ow5K9qi0mEQBkG3t2Du\n3gktWZg3cAflKh4Wbyb1dYdv0Vrk5fTgtPj/1KOIs1mIXJOt8AHfTpiWHkSMoQLt\nl+i+x1IQJyUSsRqsRl5c+LeFIfhDL++1QFGxQ/iBAoGBAIApyxr4XVSYgeFrjBGp\n2yQ3CERMVpdQrUjJkBukruditkPAIuRyRt8m6Et+HJKwJ+US2S5v3yNJEZfrSpru\nbu6hr7ctBorT7Ny6Er+gKmmgLlt+LmafIvWCehoO/PUcgh0nmSYy+ScOZ3SrrUvS\n7jO/bJHyGde9IxvwHwcmq9sBAoGADLcZY3IJBe6wHsxXNlxyS4ycLJoHBtr5JpI0\nqaGzeaHC4/94/8NKasiRGzV+9xu1CXCl+6fYjzldS8ePCNBJOtpkIiFv3C5xsRew\nvtijpZTIsbt1hsA+qQ0NETtUoqfywyWTa8xj37W5XaZYAO/G3bvIUWvsC9tukRBM\nmKyD/oECgYBghlogdkPHkZjT/J4KHAbNlHu2u378LE6obw1PU5U+Bn/KxgbumAQy\nGJiWCbZ6tf/3eSKThWE1SihHv9P0qUis+z4uvctNMRZ3ttnEGoDvNbOBRWW3xxSu\nAble5o/TFwAEtTfESt3gzx+BTjya+kdUckAuZDiN0xXw9dkRJqj+5w==\n-----END RSA PRIVATE KEY-----" >> /root/.ssh/id_rsa;
+  chmod 600 /root/.ssh/id_rsa;
+  ssh-keyscan gitee.com > /root/.ssh/known_hosts;
+fi
+
 if [ ! -d $CODE_DIR/.git ]; then
   echo "代码目录为空, 开始clone代码...";
   cd $CODE_DIR;
