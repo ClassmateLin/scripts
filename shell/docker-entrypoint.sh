@@ -6,7 +6,7 @@ if [ -z $CODE_DIR ]; then
 fi
 
 if [ -z $REPO_URL ]; then
-  REPO_URL=https://github.com/ClassmateLin/jd_scripts.git
+  REPO_URL=https://github.com/jakehu/jd_scripts.git
 fi
 
 if [ ! -d $CODE_DIR/.git ]; then
