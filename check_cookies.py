@@ -26,6 +26,9 @@ async def check_cookies():
         account = cookies.pop('remark')
         if not account:
             account = unquote(cookies['pt_pin'])
+
+        if cookies.get('ws_key', None):
+            continue
         ok = await async_check_cookie(cookies)
         if not ok:
             message += ' ' * 6 + account + '\n'
