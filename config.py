@@ -69,10 +69,13 @@ JOY_FEED_COUNT = cfg.get('joy_feed_count', 20)
 
 # JD COOKIES
 JD_COOKIES = [j for j in [{'pt_pin': re.search(r'pt_pin=(.*?);', i).group(1),
-                           'pt_key': re.search(r'pt_key=(.*?);', i).group(1),
-                           'remark': re.search(r'remark=(.*?);', i).group(1).encode('utf-8').decode('utf-8') if re.search('remark=(.*?);', str(i)) else None}
+                           'pt_key': re.search(r'pt_key=(.*?);', i).group(1) if re.search('pt_key=(.*?);', str(i)) else None,
+                           'ws_key': re.search(r'ws_key=(.*?);', i).group(1) if re.search('ws_key=(.*?);', str(i)) else None,
+                           'remark': re.search(r'remark=(.*?);', i).group(1) if re.search('remark=(.*?);', str(i)) else None}
                           for i in cfg.get('jd_cookies', []) if re.search('pt_pin=(.*?);pt_key=(.*?);', i)
-                          or re.search(r'pt_key=(.*?);pt_pin=(.*?);', str(i))] if j['pt_pin'] != '']
+                          or re.search(r'pt_key=(.*?);pt_pin=(.*?);', str(i))
+                          or re.search(r'ws_key=(.*?);pt_pin=(.*?);', str(i))
+                          or re.search(r'pt_pin=(.*?);ws_key=(.*?);', str(i))] if j['pt_pin'] != '']
 
 # 请求头列表
 USER_AGENT_LIST = [
