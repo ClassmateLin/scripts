@@ -10,7 +10,7 @@ import os
 import multiprocessing
 import asyncio
 import time
-
+import platform
 import requests
 from urllib.parse import unquote
 from utils.cookie import sync_check_cookie, ws_key_to_pt_key
@@ -22,6 +22,24 @@ from db.model import Code
 
 
 __all__ = ('process_start', 'get_code_list')
+
+
+def validate(**kwargs):
+    """
+    :param kwargs:
+    :return:
+    """
+    try:
+        if platform.machine() == 'aarch64':
+            from .libjdbitmapkit_arm import validate
+        elif platform.platform().startswith('Darwin'):
+            from .libjdbitmapkit_darwin import validate
+        else:
+            from .libjdbitmapkit_darwin import validate
+
+        validate(**kwargs)
+    except Exception as e:
+        return False
 
 
 def sign(data, api_key='4ff4d7df-e07d-31a9-b746-97328ca9241d'):
@@ -159,6 +177,7 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
     :param name: 活动名称
     :return:
     """
+    validate()
     multiprocessing.freeze_support()
     process_count = multiprocessing.cpu_count()
 
@@ -204,6 +223,10 @@ def process_start(scripts_cls, name='', process_num=None, help=True, code_key=No
             'sort': i,   # 排序, 影响助力码顺序
             'account': account
         }
+
+        if not validate(**kwargs):  # 验证不通过
+            continue
+
         kwargs.update(jd_cookie)
         kwargs_list.append(kwargs)
         process = pool.apply_async(start, args=(scripts_cls, ), kwds=kwargs)
